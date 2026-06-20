@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "IELTS Web Reader",
+  "version": "0.1.0",
+  "description": "Hover-translate 3000+ IELTS 重点词 (ielts-must-pass) - 仅翻译未掌握，零干扰 3000 基础词。一键加入 SM-2 学习队列。",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "<all_urls>",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "content/scanner.js",
+        "content/highlight.js",
+        "content/tooltip.js",
+        "content/content.js"
+      ],
+      "css": ["content/tooltip.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "IELTS Web Reader",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

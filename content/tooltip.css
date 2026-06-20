@@ -1,0 +1,134 @@
+/* tooltip.css — 悬浮提示样式 (深色 / 醒目 / 跨站点稳定) */
+
+.iwr-tooltip {
+  position: absolute;
+  z-index: 2147483647;
+  background: #1a1a1a;
+  color: #e8e8e8;
+  padding: 10px 14px;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 320px;
+  min-width: 180px;
+  pointer-events: auto;
+  user-select: none;
+  border: 1px solid #333;
+}
+
+.iwr-tooltip .iwr-word-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.iwr-tooltip .iwr-word {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.iwr-tooltip .iwr-pos {
+  font-style: italic;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.iwr-tooltip .iwr-phonetic {
+  color: #9ca3af;
+  font-size: 12px;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", sans-serif;
+}
+
+.iwr-tooltip .iwr-cache {
+  font-size: 11px;
+  color: #6ee7b7;
+  margin-left: auto;
+}
+
+.iwr-tooltip .iwr-translation {
+  color: #ffd966;
+  font-size: 15px;
+  margin: 4px 0 10px 0;
+  font-weight: 500;
+}
+
+.iwr-tooltip .iwr-loading {
+  color: #9ca3af;
+  font-size: 13px;
+  padding: 4px 0;
+}
+
+.iwr-tooltip .iwr-err {
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+.iwr-tooltip .iwr-err small {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.iwr-tooltip .iwr-btn-add {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.iwr-tooltip .iwr-btn-add:hover:not(:disabled) {
+  background: #059669;
+}
+
+.iwr-tooltip .iwr-btn-add:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.iwr-tooltip .iwr-btn-add.iwr-btn-done {
+  background: #4b5563;
+}
+
+.iwr-tooltip .iwr-btn-play {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  padding: 0 4px !important;
+  margin: 0 4px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.15s !important;
+}
+
+.iwr-tooltip .iwr-btn-play:hover:not(:disabled) {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}
+
+.iwr-tooltip .iwr-btn-play:disabled {
+  cursor: default !important;
+  opacity: 0.5 !important;
+}
+
+/* 高亮: 极轻下划线 + 浅黄点状 background，hover 时由 tooltip.js 接管 */
+.iwr-unknown {
+  border-bottom: 1px dotted #ffd966;
+  cursor: help;
+  transition: background 0.15s;
+}
+
+.iwr-unknown:hover {
+  background: rgba(255, 217, 102, 0.15);
+}
