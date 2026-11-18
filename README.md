@@ -4,6 +4,7 @@
 
 > 配套后端：[ielts-must-pass](https://github.com/frankdeng-github/ielts-must-pass) (FastAPI, port 8100)
 > 配套文档：[`docs/SPEC_web_reader.md`](docs/SPEC_web_reader.md)
+> 贡献说明：[PR 改动范围检查](docs/change-scope.md)
 
 ---
 
