@@ -1,0 +1,33 @@
+name: Approved change scope
+
+on:
+  repository_dispatch:
+    types: [approve-change-scope]
+
+permissions:
+  contents: read
+  pull-requests: read
+  statuses: write
+
+concurrency:
+  group: approved-scope-${{ github.event.sender.id }}-${{ github.event.client_payload.pr }}
+  cancel-in-progress: true
+
+jobs:
+  report:
+    name: Report approved paths
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Load the verifier from the trusted default branch
+        run: |
+          set -euo pipefail
+          git init -q "$RUNNER_TEMP/scope-repo"
+          git -C "$RUNNER_TEMP/scope-repo" fetch --no-tags "https://github.com/$GITHUB_REPOSITORY.git" "$GITHUB_SHA"
+          for script in check-change-scope.py verify-pr-scope.py; do
+            git -C "$RUNNER_TEMP/scope-repo" show "$GITHUB_SHA:.github/scripts/$script" > "$RUNNER_TEMP/$script"
+          done
+      - name: Verify and publish the result
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 "$RUNNER_TEMP/verify-pr-scope.py" "$RUNNER_TEMP/scope-repo"
